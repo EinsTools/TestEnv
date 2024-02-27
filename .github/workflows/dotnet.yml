@@ -55,7 +55,7 @@ jobs:
         path: myapp  
 
   deployProduction:
-    needs: build
+    needs: testing
     runs-on: self-hosted
     environment: production
     steps:
