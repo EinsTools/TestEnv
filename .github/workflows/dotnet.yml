@@ -34,3 +34,27 @@ jobs:
       with:
         name: .net-app
         path: myapp
+  
+  deployTesting:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download artifact for deployment job
+      uses: actions/download-artifact@v4
+      with:
+        name: .net-app
+        path: myapp
+    - name: Deploy to testing
+      run: echo "Deploying to testing environment"
+
+  deployProduction:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download artifact for deployment job
+      uses: actions/download-artifact@v4
+      with:
+        name: .net-app
+        path: myapp
+    - name: Deploy to production
+      run: echo "Deploying to production environment"
