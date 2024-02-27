@@ -45,8 +45,15 @@ jobs:
       with:
         name: .net-app
         path: myapp
-    - name: Deploy to testing
-      run: echo "Deploying to testing environment"
+    - name: Copy test appsettings.json
+      run: cp myapp/config/appsettings.testing.json myapp/appsettings.json
+    - name: Delete config folder
+      run: rm -rf myapp/config
+    - name: Upload artifact for testing job
+      uses: actions/upload-artifact@v4
+      with:
+        name: .net-app-testing
+        path: myapp  
 
   deployProduction:
     needs: build
@@ -58,5 +65,12 @@ jobs:
       with:
         name: .net-app
         path: myapp
-    - name: Deploy to production
-      run: echo "Deploying to production environment"
+    - name: Copy test appsettings.json
+      run: cp myapp/config/appsettings.production.json myapp/appsettings.json
+    - name: Delete config folder
+      run: rm -rf myapp/config
+    - name: Upload artifact for testing job
+      uses: actions/upload-artifact@v4
+      with:
+        name: .net-app-testing
+        path: myapp  
