@@ -38,6 +38,7 @@ jobs:
   deployTesting:
     needs: build
     runs-on: ubuntu-latest
+    environment: testing
     steps:
     - name: Download artifact for deployment job
       uses: actions/download-artifact@v4
@@ -50,6 +51,7 @@ jobs:
   deployProduction:
     needs: build
     runs-on: ubuntu-latest
+    environment: production
     steps:
     - name: Download artifact for deployment job
       uses: actions/download-artifact@v4
