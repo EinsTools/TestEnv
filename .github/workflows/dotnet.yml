@@ -72,5 +72,5 @@ jobs:
     - name: Upload artifact for testing job
       uses: actions/upload-artifact@v4
       with:
-        name: .net-app-testing
+        name: .net-app-production
         path: myapp  
